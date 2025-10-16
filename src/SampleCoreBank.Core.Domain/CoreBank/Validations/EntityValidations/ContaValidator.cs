@@ -1,0 +1,17 @@
+using SampleCoreBank.Shared.Abstractions.Domain.Validations;
+using SampleCoreBank.Core.Domain.CoreBank.Entities;
+using FluentValidation;
+
+namespace SampleCoreBank.Core.Domain.CoreBank.Validations.EntityValidations
+{
+    public class ContaValidator : EntityValidator<Conta>
+    {
+        public ContaValidator() 
+        {
+            RuleFor(p => p.DocumentoTitular).NotNull().WithMessage("'{0}' é obrigatório!");
+            RuleFor(p => p.DocumentoTitular).NotEmpty().WithMessage("'{0}' é obrigatório!");
+            RuleFor(p => p.NomeTitular).NotNull().WithMessage("'{0}' é obrigatório!");
+            RuleFor(p => p.NomeTitular).NotEmpty().WithMessage("'{0}' é obrigatório!");
+        }
+    }
+}

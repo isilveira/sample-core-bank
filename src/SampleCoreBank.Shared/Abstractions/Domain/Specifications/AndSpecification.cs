@@ -1,0 +1,23 @@
+using System;
+using System.Linq.Expressions;
+
+namespace SampleCoreBank.Shared.Abstractions.Domain.Specifications
+{
+
+	internal sealed class AndSpecification<T> : Specification<T>
+	{
+		private readonly Specification<T> _left;
+		private readonly Specification<T> _right;
+		public AndSpecification(Specification<T> left, Specification<T> right)
+		{
+			_right = right;
+			_left = left;
+		}
+		public override Expression<Func<T, bool>> ToExpression()
+		{
+			Expression<Func<T, bool>> expression = _left.ToExpression();
+			InvocationExpression right = Expression.Invoke(_right.ToExpression(), expression.Parameters);
+			return (Expression<Func<T, bool>>)Expression.Lambda(Expression.AndAlso(expression.Body, right), expression.Parameters);
+		}
+	}
+}

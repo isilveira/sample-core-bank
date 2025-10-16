@@ -1,5 +1,4 @@
-Desafio Técnico - Sistema Caixa de Banco da 
-Vindi 
+Desafio Técnico
 Antes de começar 
 Por favor, leia atentamente todo este documento e procure seguir as instruções com o 
 máximo de cuidado: 
