@@ -16,7 +16,9 @@ namespace SampleCoreBank.Middleware.AddServices
 		{
 			services.AddTransient<ContaExisteSpecification>();
 			services.AddTransient<MovimetacaoContaCreditadaEhValidaSpecification>();
+			services.AddTransient<MovimetacaoContaCreditadaEhAtivaSpecification>();
 			services.AddTransient<MovimetacaoContaDebitadaEhValidaSpecification>();
+			services.AddTransient<MovimetacaoContaDebitadaEhAtivaSpecification>();
 			services.AddTransient<MovimetacaoVerificaSaldoContaDebitadaSpecification>();
 			services.AddTransient<NaoPermitirCadastrarContaComMesmoDocumentoSpecification>();
 

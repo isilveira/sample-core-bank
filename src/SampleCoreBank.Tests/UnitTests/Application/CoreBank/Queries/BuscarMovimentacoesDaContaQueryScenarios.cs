@@ -19,7 +19,7 @@ public class BuscarMovimentacoesDaContaQueryScenarios
 
 		var contextData = MovimentacoesCollections.GetDefaultCollection();
 
-		using (var context = CoreBankDbContextExtensions.GetInMemoryCoreBankDbContext().SetupMovimentacoesData())
+		using (var context = CoreBankDbContextExtensions.GetInMemoryCoreBankDbContext().SetupContasData().SetupDesativacaoContasData().SetupMovimentacoesData())
 		{
 			var reader = new CoreBankDbContextReader(context);
 
@@ -37,7 +37,7 @@ public class BuscarMovimentacoesDaContaQueryScenarios
 
 			var query = new BuscarMovimentacoesDaContaQuery();
 
-			query.DocumentoTitular = "12345678900";
+			query.DocumentoTitular = "12345678901";
 
 			var result = await handler.Handle(query, default);
 

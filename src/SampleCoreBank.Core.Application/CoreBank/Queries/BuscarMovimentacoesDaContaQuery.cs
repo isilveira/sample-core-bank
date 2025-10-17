@@ -1,12 +1,14 @@
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using SampleCoreBank.Core.Domain.CoreBank.Entities;
 using SampleCoreBank.Core.Domain.CoreBank.Interfaces.Infrastructures.Data;
 using SampleCoreBank.Core.Domain.CoreBank.Services;
 using SampleCoreBank.Shared.Abstractions.Application;
+using SampleCoreBank.Shared.Abstractions.Domain.Exceptions;
 using SampleCoreBank.Shared.Helpers;
-using Microsoft.EntityFrameworkCore;
+using System.Security.AccessControl;
 
 namespace SampleCoreBank.Core.Application.Commands
 {
@@ -53,6 +55,11 @@ namespace SampleCoreBank.Core.Application.Commands
         {
             try
             {
+                if(!Reader.Query<Conta>().Include(c=>c.DesativacaoConta).Any(c=>c.DocumentoTitular == request.DocumentoTitular && c.DesativacaoConta == null))
+                {
+					throw new EntityNotFoundException<Conta>(Localizer);
+				}
+
                 var query = Reader.Query<Movimentacao>()
                     .AsNoTracking()
                     .AsQueryable();
