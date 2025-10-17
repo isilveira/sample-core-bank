@@ -4,7 +4,7 @@ services:
     container_name: samplecorebank-sql
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=SA_password123    # troque para algo seguro
+      - SA_PASSWORD=SA_password123
     ports:
       - "1433:1433"
     volumes:
@@ -22,20 +22,11 @@ services:
       dockerfile: Dockerfile
     image: samplecorebank/webapi:latest
     container_name: samplecorebank-webapi
-    depends_on:
-      sqlserver:
-        condition: service_healthy
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=CoreBankDb;User Id=sa;Password=SA_password123;TrustServerCertificate=True;
-      - SQLSERVER_HOST=sqlserver
-      - SQLSERVER_PORT=1433
-      - SKIP_DB_MIGRATIONS=false
     ports:
       - "5000:5000"
-    volumes:
-      # optional for development: mount source for hot-reload (use with caution)
-      - ./src/SampleCoreBank.Presentations.WebAPI:/src/SampleCoreBank.Presentations.WebAPI:ro
     restart: unless-stopped
 
 volumes:

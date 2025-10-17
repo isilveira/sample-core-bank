@@ -26,7 +26,7 @@ namespace SampleCoreBank.Core.Application.Commands
     }
     public class BuscarMovimentacoesDaContaQuery : ApplicationRequest<BuscarMovimentacoesDaContaQueryResponse>
 	{
-		public string DocumentoTitular { get; set; }
+		public string? DocumentoTitular { get; set; }
 		public BuscarMovimentacoesDaContaQuery()
         {
 

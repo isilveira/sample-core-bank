@@ -27,6 +27,8 @@ namespace SampleCoreBank.Presentations.WebAPI.Controllers
 		[HttpGet("{documentoTitular}/movimentacoes")]
 		public async Task<ActionResult<BuscarMovimentacoesDaContaQueryResponse>> BuscarMovimentacoesDaConta([FromRoute] string documentoTitular, [FromQuery] BuscarMovimentacoesDaContaQuery query, CancellationToken cancellationToken = default)
 		{
+			query.DocumentoTitular = documentoTitular;
+
 			return await Send(query, cancellationToken);
 		}
 		[HttpPost("{documentoTitularDebitado}/transferir-recurso")]

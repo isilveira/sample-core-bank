@@ -29,10 +29,6 @@ RUN dotnet publish "SampleCoreBank.Presentations.WebAPI.csproj" -c Release -o /a
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
 
-# optional: create non-root user (recommended)
-RUN useradd -ms /bin/bash appuser
-USER appuser
-
 # copy published output
 COPY --from=build /app/publish ./
 

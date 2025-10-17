@@ -1,12 +1,18 @@
 # sample-core-bank
 
+.NET 9
 
+O Projeto está configurado para executar no docker já com banco no compose.
+Caso prefira executar sem basta alterar a conectionString no ".\sample-core-bank\src\SampleCoreBank.Presentations.WebAPI\appsettings.Development.json"
+
+#### Docker
+> docker-compose up --build
 
 #### POSTMAN COLLECTION
 > docs/Postman
 
 #### SWAGGER
-> https://localhost:7239/swagger/index.html
+> http://localhost:5000/swagger/index.html
 
 
 #### MIGRATIONS
