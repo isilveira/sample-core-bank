@@ -5,7 +5,7 @@ namespace SampleCoreBank.Infrastructures.Data.CoreBank
 {
     public class CoreBankDbContextReader : Reader, ICoreBankDbContextReader
     {
-        public CoreBankDbContextReader(DbContext context) : base(context)
+        public CoreBankDbContextReader(CoreBankDbContext context) : base(context)
         {
         }
     }

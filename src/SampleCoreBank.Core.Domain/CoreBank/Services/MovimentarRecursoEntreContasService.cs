@@ -38,6 +38,8 @@ namespace SampleCoreBank.Core.Domain.CoreBank.Services
             contaCreditada.Saldo += request.Payload.Valor;
             contaDebitada.Saldo -= request.Payload.Valor;
 
+            request.Payload.DataOperacao = DateTime.Now;
+
             await Writer.AddAsync(request.Payload);
 
             return request.Payload;

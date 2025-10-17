@@ -3,10 +3,14 @@ using SampleCoreBank.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services
 	.AddMiddleware(builder.Configuration, typeof(Program).Assembly);
-builder.Services.AddControllers();
+
+builder.Services.AddControllers()
+	.AddJsonOptions(options =>
+	{
+		options.JsonSerializerOptions.MaxDepth = 5; // aumenta profundidade se necessário
+	});
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 

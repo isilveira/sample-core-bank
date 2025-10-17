@@ -23,8 +23,8 @@ namespace SampleCoreBank.Core.Application.Commands
     }
     public class DesativarContaCommand : ApplicationRequest<DesativarContaCommandResponse>
 	{
-		public string DocumentoTitular { get; set; }
-		public string Responsavel { get; set; }
+		public string? DocumentoTitular { get; set; }
+		public string? Responsavel { get; set; }
         
 		public DesativarContaCommand()
         {

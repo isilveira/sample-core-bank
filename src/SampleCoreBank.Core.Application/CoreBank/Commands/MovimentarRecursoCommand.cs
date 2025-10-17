@@ -23,7 +23,7 @@ namespace SampleCoreBank.Core.Application.Commands
     }
     public class MovimentarRecursoCommand : ApplicationRequest<MovimentarRecursoCommandResponse>
 	{
-		public string DocumentoTitularDebitado { get; set; }
+		public string? DocumentoTitularDebitado { get; set; }
 		public string DocumentoTitularCreditado { get; set; }
 		public decimal Valor { get; set; }
 

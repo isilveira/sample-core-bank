@@ -17,7 +17,7 @@ namespace SampleCoreBank.Infrastructures.Data.CoreBank.EntityMappings
             builder
                 .Property<DateTime>(p => p.Data)
                 .HasColumnName("Data")
-                .HasColumnType("DATETIME)")
+                .HasColumnType("DATETIME")
                 .IsRequired(true);
                 
             builder

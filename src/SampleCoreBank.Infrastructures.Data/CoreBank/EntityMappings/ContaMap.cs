@@ -29,7 +29,7 @@ namespace SampleCoreBank.Infrastructures.Data.CoreBank.EntityMappings
             builder
                 .Property<DateTime>(p => p.DataAbertura)
                 .HasColumnName("DataAbertura")
-                .HasColumnType("DATETIME)")
+                .HasColumnType("DATETIME")
                 .IsRequired(true);
 
             builder

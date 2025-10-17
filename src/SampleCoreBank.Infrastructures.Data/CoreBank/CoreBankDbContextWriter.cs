@@ -5,7 +5,7 @@ namespace SampleCoreBank.Infrastructures.Data.CoreBank
 {
     public class CoreBankDbContextWriter : Writer, ICoreBankDbContextWriter
     {
-        public CoreBankDbContextWriter(DbContext context) : base(context)
+        public CoreBankDbContextWriter(CoreBankDbContext context) : base(context)
         {
         }
     }

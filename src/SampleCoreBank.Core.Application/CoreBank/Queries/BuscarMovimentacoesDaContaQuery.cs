@@ -64,7 +64,7 @@ namespace SampleCoreBank.Core.Application.Commands
                     .OrderBy(c=>c.DataOperacao)
                     .ToListAsync(cancellationToken);
 
-				return new BuscarMovimentacoesDaContaQueryResponse(request, data, Localizer["Operação realizada com sucesso!"], 1);
+				return new BuscarMovimentacoesDaContaQueryResponse(request, data, Localizer["Operação realizada com sucesso!"], data != null ? data.Count : 0);
             }
             catch (Exception exception)
             {

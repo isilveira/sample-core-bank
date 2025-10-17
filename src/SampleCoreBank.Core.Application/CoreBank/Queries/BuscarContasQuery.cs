@@ -24,8 +24,8 @@ namespace SampleCoreBank.Core.Application.Commands
     }
     public class BuscarContasQuery : ApplicationRequest<BuscarContasQueryResponse>
 	{
-		public string NomeTitular { get; set; }
-		public string DocumentoTitular { get; set; }
+		public string? NomeTitular { get; set; }
+		public string? DocumentoTitular { get; set; }
 		public BuscarContasQuery()
         {
 
@@ -64,10 +64,10 @@ namespace SampleCoreBank.Core.Application.Commands
 
 				if (!string.IsNullOrWhiteSpace(request.NomeTitular))
 					query = query.Where(c => c.NomeTitular.Contains(request.NomeTitular));
-
+                
                 var data = await query.ToListAsync(cancellationToken);
 
-				return new BuscarContasQueryResponse(request, data, Localizer["Operação realizada com sucesso!"], 1);
+				return new BuscarContasQueryResponse(request, data, Localizer["Operação realizada com sucesso!"], data != null ? data.Count : 0);
             }
             catch (Exception exception)
             {

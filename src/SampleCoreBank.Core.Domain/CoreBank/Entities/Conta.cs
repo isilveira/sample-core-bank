@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace SampleCoreBank.Core.Domain.CoreBank.Entities
 {
     public class Conta
@@ -8,7 +10,9 @@ namespace SampleCoreBank.Core.Domain.CoreBank.Entities
         public DateTime DataAbertura { get; set; }
         public string Status { get { return DesativacaoConta != null && DesativacaoConta.Data > DateTime.MinValue ? "Inativa" : "Ativa"; } }
         public virtual DesativacaoConta DesativacaoConta { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Movimentacao> MovimentacoesCreditadas { get; set; }
-        public virtual ICollection<Movimentacao> MovimentacoesDebitadas { get; set; }
+		[JsonIgnore]
+		public virtual ICollection<Movimentacao> MovimentacoesDebitadas { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace SampleCoreBank.Presentations.WebAPI.Controllers
 	public class ContasController : ResourceController
 	{
 		[HttpGet]
-		public async Task<ActionResult<BuscarContasQueryResponse>> Get([FromBody] BuscarContasQuery query, CancellationToken cancellationToken = default)
+		public async Task<ActionResult<BuscarContasQueryResponse>> Get([FromQuery] BuscarContasQuery query, CancellationToken cancellationToken = default)
 		{
 			return await Send(query, cancellationToken);
 		}
@@ -19,14 +19,23 @@ namespace SampleCoreBank.Presentations.WebAPI.Controllers
 		}
 
 		[HttpPost("{documentoTitular}/desativar")]
-		public async Task<ActionResult<DesativarContaCommandResponse>> Post([FromRoute, FromBody] DesativarContaCommand command, CancellationToken cancellationToken = default(CancellationToken))
+		public async Task<ActionResult<DesativarContaCommandResponse>> Post([FromRoute] string documentoTitular, [FromBody] DesativarContaCommand command, CancellationToken cancellationToken = default(CancellationToken))
 		{
+			command.DocumentoTitular = documentoTitular;
+
 			return await Send(command, cancellationToken);
 		}
 		[HttpGet("{documentoTitular}/movimentacoes")]
 		public async Task<ActionResult<BuscarMovimentacoesDaContaQueryResponse>> Get([FromRoute] BuscarMovimentacoesDaContaQuery query, CancellationToken cancellationToken = default)
 		{
 			return await Send(query, cancellationToken);
+		}
+		[HttpPost("{documentoTitularDebitado}/transferir-recurso")]
+		public async Task<ActionResult<MovimentarRecursoCommandResponse>> Post([FromRoute] string documentoTitularDebitado, [FromBody] MovimentarRecursoCommand command, CancellationToken cancellationToken = default)
+		{
+			command.DocumentoTitularDebitado = documentoTitularDebitado;
+
+			return await Send(command, cancellationToken);
 		}
 	}
 }

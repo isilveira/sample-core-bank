@@ -32,12 +32,12 @@ namespace SampleCoreBank.Middleware.AddServices
 		}
 		public static IServiceCollection AddDbContextsTest(this IServiceCollection services, IConfiguration configuration)
 		{
-			services.AddTransient<ICoreBankDbContextWriter, CoreBankDbContextWriter>();
-			services.AddTransient<ICoreBankDbContextReader, CoreBankDbContextReader>();
-
 			services.AddDbContext<CoreBankDbContext>(options =>
 				options.UseInMemoryDatabase(nameof(CoreBankDbContext), new InMemoryDatabaseRoot()),
 				ServiceLifetime.Singleton);
+			
+			services.AddTransient<ICoreBankDbContextWriter, CoreBankDbContextWriter>();
+			services.AddTransient<ICoreBankDbContextReader, CoreBankDbContextReader>();
 
 			return services;
 		}
