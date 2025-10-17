@@ -1,5 +1,10 @@
 # sample-core-bank
 
+
+
+#### POSTMAN COLLECTION
+> docs/Postman
+
 #### SWAGGER
 > https://localhost:7239/swagger/index.html
 

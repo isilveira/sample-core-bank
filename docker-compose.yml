@@ -1,0 +1,42 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: samplecorebank-sql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=SA_password123    # troque para algo seguro
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P SA_password123 -Q 'select 1'"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+
+  webapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: samplecorebank/webapi:latest
+    container_name: samplecorebank-webapi
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=CoreBankDb;User Id=sa;Password=SA_password123;TrustServerCertificate=True;
+      - SQLSERVER_HOST=sqlserver
+      - SQLSERVER_PORT=1433
+      - SKIP_DB_MIGRATIONS=false
+    ports:
+      - "5000:5000"
+    volumes:
+      # optional for development: mount source for hot-reload (use with caution)
+      - ./src/SampleCoreBank.Presentations.WebAPI:/src/SampleCoreBank.Presentations.WebAPI:ro
+    restart: unless-stopped
+
+volumes:
+  mssql-data:
