@@ -1,13 +1,13 @@
-using SampleCoreBank.Core.Domain.CoreBank.Abstractions.Specifications;
+using SampleCoreBank.Core.Domain.CoreBank.Specifications;
 using SampleCoreBank.Core.Domain.CoreBank.Entities;
 using SampleCoreBank.Shared.Abstractions.Domain.Validations;
 
 namespace SampleCoreBank.Core.Domain.CoreBank.Validations.DomainValidations
 {
     
-    public class CadastrarContaSpecificationValidator : DomainValidator<Conta>
+    public class CadastrarContaSpecificationsValidator : DomainValidator<Conta>
     {
-        public CadastrarContaSpecificationValidator(
+        public CadastrarContaSpecificationsValidator(
             NaoPermitirCadastrarContaComMesmoDocumentoSpecification naoPermitirCadastrarContaComMesmoDocumentoSpecification
         )
         {

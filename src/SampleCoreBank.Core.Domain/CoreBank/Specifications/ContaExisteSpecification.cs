@@ -3,7 +3,7 @@ using SampleCoreBank.Core.Domain.CoreBank.Entities;
 using SampleCoreBank.Core.Domain.CoreBank.Interfaces.Infrastructures.Data;
 using SampleCoreBank.Shared.Abstractions.Domain.Specifications;
 
-namespace SampleCoreBank.Core.Domain.CoreBank.Abstractions.Specifications
+namespace SampleCoreBank.Core.Domain.CoreBank.Specifications
 {
     public class ContaExisteSpecification : Specification<DesativacaoConta>
     {

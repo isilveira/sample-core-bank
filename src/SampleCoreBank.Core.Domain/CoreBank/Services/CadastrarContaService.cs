@@ -5,7 +5,7 @@ using SampleCoreBank.Core.Domain.CoreBank.Validations.EntityValidations;
 using SampleCoreBank.Shared.Abstractions.Domain.Services;
 using Microsoft.Extensions.Localization;
 
-namespace SampleCoreBank.Core.Domain.CoreBank.Abstractions.Services
+namespace SampleCoreBank.Core.Domain.CoreBank.Services
 {
     public class CadastrarContaServiceRequest : DomainServiceRequest<Conta>
     {
@@ -20,7 +20,7 @@ namespace SampleCoreBank.Core.Domain.CoreBank.Abstractions.Services
             ICoreBankDbContextWriter writer,
             IStringLocalizer<CadastrarContaServiceRequestHandler> localizer,
             ContaValidator entityValidator,
-            CadastrarContaSpecificationValidator domainValidator)
+            CadastrarContaSpecificationsValidator domainValidator)
             : base(localizer, entityValidator, domainValidator)
         {
             Writer = writer;
