@@ -1,5 +1,8 @@
 # sample-core-bank
 
+#### SWAGGER
+> https://localhost:7239/swagger/index.html
+
 
 #### MIGRATIONS
 On the startup project

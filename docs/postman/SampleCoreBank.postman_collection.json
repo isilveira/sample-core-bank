@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "b6ba7872-4152-41f7-a265-10aa0798182e",
+		"name": "SampleCoreBank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1879888"
+	},
+	"item": [
+		{
+			"name": "Buscar Contas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7239/api/contas?NomeTitular=&DocumentoTitular=",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7239",
+					"path": [
+						"api",
+						"contas"
+					],
+					"query": [
+						{
+							"key": "NomeTitular",
+							"value": ""
+						},
+						{
+							"key": "DocumentoTitular",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar conta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"documentoTitular\": \"00000000001\",\r\n    \"nomeTitular\": \"Titular Teste 001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7239/api/contas",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7239",
+					"path": [
+						"api",
+						"contas"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

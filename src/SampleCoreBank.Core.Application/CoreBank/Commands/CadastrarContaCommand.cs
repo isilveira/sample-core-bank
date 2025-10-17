@@ -23,8 +23,8 @@ namespace SampleCoreBank.Core.Application.Commands
     }
     public class CadastrarContaCommand : ApplicationRequest<CadastrarContaCommandResponse>
 	{
-		public string NomeTitular { get; set; }
-		public string DocumentoTitular { get; set; }
+		public string? NomeTitular { get; set; }
+		public string? DocumentoTitular { get; set; }
 		public CadastrarContaCommand()
         {
 
