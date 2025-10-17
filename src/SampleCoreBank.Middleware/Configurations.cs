@@ -65,10 +65,10 @@ namespace SampleCoreBank.Middleware
 			services.AddDomainValidations();
 			services.AddDomainServices();
 
-			var assemblyApplication = AppDomain.CurrentDomain.Load("Store.Core.Application");
-			var assemblyDomain = AppDomain.CurrentDomain.Load("Store.Core.Domain");
-			var assemblyInfrastructuresServices = AppDomain.CurrentDomain.Load("Store.Infrastructures.Services");
-			services.AddMediatR(options => options.RegisterServicesFromAssemblies(assemblyApplication, assemblyDomain, assemblyInfrastructuresServices));
+			var assemblyApplication = AppDomain.CurrentDomain.Load("SampleCoreBank.Core.Application");
+			var assemblyDomain = AppDomain.CurrentDomain.Load("SampleCoreBank.Core.Domain");
+
+			services.AddMediatR(options => options.RegisterServicesFromAssemblies(assemblyApplication, assemblyDomain));
 
 			// YOUR CODE GOES HERE
 			return services;

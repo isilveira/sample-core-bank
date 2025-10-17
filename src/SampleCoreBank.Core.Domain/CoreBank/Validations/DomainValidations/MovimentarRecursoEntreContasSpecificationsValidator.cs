@@ -9,8 +9,10 @@ namespace SampleCoreBank.Core.Domain.CoreBank.Validations.DomainValidations
     {
         public MovimentarRecursoEntreContasSpecificationsValidator(
             MovimetacaoContaDebitadaEhValidaSpecification movimetacaoContaDebitadaEhValidaSpecification,
-            MovimetacaoContaCreditadaEhValidaSpecification movimetacaoContaCreditadaEhValidaSpecification,
-            MovimetacaoVerificaSaldoContaDebitadaSpecification movimetacaoVerificaSaldoContaDebitadaSpecification
+			MovimetacaoContaDebitadaEhAtivaSpecification movimetacaoContaDebitadaEhAtivaSpecification,
+			MovimetacaoContaCreditadaEhValidaSpecification movimetacaoContaCreditadaEhValidaSpecification,
+			MovimetacaoContaCreditadaEhAtivaSpecification movimetacaoContaCreditadaEhAtivaSpecification,
+			MovimetacaoVerificaSaldoContaDebitadaSpecification movimetacaoVerificaSaldoContaDebitadaSpecification
         )
         {
             Add(
@@ -20,14 +22,28 @@ namespace SampleCoreBank.Core.Domain.CoreBank.Validations.DomainValidations
                     movimetacaoContaDebitadaEhValidaSpecification.ToString()
                 )
             );
-            Add(
+			Add(
+				nameof(movimetacaoContaDebitadaEhAtivaSpecification),
+				new DomainRule<Movimentacao>(
+					movimetacaoContaDebitadaEhAtivaSpecification,
+					movimetacaoContaDebitadaEhAtivaSpecification.ToString()
+				)
+			);
+			Add(
                 nameof(movimetacaoContaCreditadaEhValidaSpecification),
                 new DomainRule<Movimentacao>(
                     movimetacaoContaCreditadaEhValidaSpecification,
                     movimetacaoContaCreditadaEhValidaSpecification.ToString()
                 )
             );
-            Add(
+			Add(
+				nameof(movimetacaoContaCreditadaEhAtivaSpecification),
+				new DomainRule<Movimentacao>(
+					movimetacaoContaCreditadaEhAtivaSpecification,
+					movimetacaoContaCreditadaEhAtivaSpecification.ToString()
+				)
+			);
+			Add(
                 nameof(movimetacaoVerificaSaldoContaDebitadaSpecification),
                 new DomainRule<Movimentacao>(
                     movimetacaoVerificaSaldoContaDebitadaSpecification,
